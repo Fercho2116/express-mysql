@@ -17,6 +17,7 @@
               <th>Descripción</th>
               <th>Ruta</th>
               <th>Fecha de creación</th>
+              <th>Etiqueta</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,15 @@
               <td><%= foto.descripcion %></td>
               <td><%= foto.ruta %></td>
               <td><%= foto.createdAt.toLocaleDateString('en-US') %></td>
+              <td> <% if (foto.etiqueta && foto.etiqueta.length > 0) { %>
+                <ul>
+                  <% foto.etiqueta.forEach((etiqueta) => { %>
+                    <li><%= etiqueta.texto %></li>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <span class="text-muted">Sin etiquetas</span>
+              <% } %></td>
             </tr>
             <% }); %>
           </tbody>
