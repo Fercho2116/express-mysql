@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('partials/nav') %>
+
+    <%- include("partials/main") -%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="container-fluid p-4">
+        <h1 class="pb-4"><%= title %></h1>
+        <% if (arrFotos.length > 0) { %>
+          <% arrFotos.forEach((foto) => { %>
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">ID: <%= foto.id %></h5>
+                <p class="card-text">Título: <%= foto.titulo %></p>
+                <p class="card-text">Descripción: <%= foto.descripcion %></p>
+                <p class="card-text">Ruta: <%= foto.ruta %></p>
+                <p class="card-text">Fecha de creación: <%= new Date(foto.createdAt).toLocaleDateString('en-US') %></p>
+                <p class="card-text">Etiquetas:</p>
+                <% if (foto.Etiquetas && foto.Etiquetas.length > 0) { %>
+                  <ul>
+                    <% foto.Etiquetas.forEach((etiqueta) => { %>
+                      <li><%= etiqueta.texto %></li>
+                    <% }) %>
+                  </ul>
+                <% } else { %>
+                  <span class="text-muted">Sin etiquetas</span>
+                <% } %>
+              </div>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <p>No se encontraron fotos con ese ID.</p>
+        <% } %>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('partials/footer2') %>
+<%- include('partials/footer') %>

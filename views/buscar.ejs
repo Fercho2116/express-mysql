@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%- include('partials/nav') %>
+
+    <%- include("partials/main") -%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="container-fluid p-4">
+        <h1 class="pb-4"><%= title %></h1>
+        <form action="/fotos/view" method="get">
+          <div class="mb-3">
+            <label for="id" class="form-label">ID de la Foto</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('partials/footer2') %>
+<%- include('partials/footer') %>
